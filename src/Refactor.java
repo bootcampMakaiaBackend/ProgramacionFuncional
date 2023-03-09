@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -6,7 +7,7 @@ public class Refactor {
 
     public static void main(String[] args) {
         //1. Encontrar las personas menores a 18.
-        //2. Luego cambiar la implementacion para encontrar los 5 primeros.
+        //2. mostrar  los 5 primeros.
         List<Person> people = getData();
         List<Person> filterList = new ArrayList<>();
         int limit = 5;
@@ -23,6 +24,12 @@ public class Refactor {
         //filterList.forEach(x -> System.out.println(x));
 
         //REFACTOR
+       List<Person> newPeople =  people.stream()
+                .filter( x -> x.getAge() <= 18)
+                .limit(5)
+                .collect(Collectors.toList());
+
+       newPeople.forEach( x -> System.out.println(x));
 
     }
 
